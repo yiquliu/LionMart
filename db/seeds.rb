@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+posts = [{:title => 'Textbook1',
+          :description=>"Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions",
+          :post_by => "somebody",
+          :price => 1122},
+         {:title => 'Textbook2',
+          :description=>"Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions",
+          :post_by => "somebody",
+          :price => 3.9}
+]
+
+posts.each do |post|
+  Post.create!(post)
+end
