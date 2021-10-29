@@ -1,0 +1,19 @@
+<!--<h1>Sessions#new</h1>-->
+<!--<p>Find me in app/views/sessions/new.html.erb</p>-->
+<h1>Sign Up</h1>
+<%= form_for @user do |f|%>
+  <%= f.label :username%><br>
+  <%= f.text_field :username%><br>
+  <%= f.label :password%><br>
+  <%= f.password_field :password%><br>
+  <%= f.submit %>
+<%end%>
+
+<h1>Login</h1>
+<%= form_tag '/login' do %>
+  <%= label_tag :username%>
+  <%= text_field_tag :username %>
+  <%= label_tag :password%>
+  <%= password_field_tag :password%>
+  <%= submit_tag "Login"%>
+<%end%>
