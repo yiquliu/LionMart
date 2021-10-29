@@ -1,6 +1,30 @@
 class LoginController < ApplicationController
-  def login
+#   def login
+#   end
+#   def register
+#   end
+# end
+def new
+end
+def index
+end
+
+def create
+  if user = authenticate_with_google
+    cookies.signed[:user_id] = user.id
+    redirect_to user
+  else
+    redirect_to login_path, alert: 'authentication_failed'
   end
-  def register
+end
+
+private
+def authenticate_with_google
+  if id_token = flash[:google_sign_in][:id_token]
+    User.find_by google_id: GoogleSignIn::Identity.new(id_token).user_id
+  elsif error = flash[:google_sign_in][:error]
+    logger.error "Google authentication error: #{error}"
+    nil
   end
+end
 end
