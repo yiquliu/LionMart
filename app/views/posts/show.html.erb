@@ -1,1 +1,26 @@
-<h1>Show the details of the post</h1>
+<h2>Details of the product</h2>
+
+<ul id="details">
+  <li>
+    Title:
+    <%= @post.title %>
+  </li>
+  <li>
+    Price:
+    <%= @post.price %>
+  </li>
+  <li>
+    Post By:
+    <%= @post.post_by %>
+  </li>
+    <li>
+    Description:
+    <%= @post.description %>
+  </li>
+</ul>
+
+<div class="row">
+  <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary col-2' %>
+  <%= link_to 'Delete', post_path(@post), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
+  <%= link_to 'Back to post list', posts_path, :class => 'btn btn-primary col-2' %>
+</div>
