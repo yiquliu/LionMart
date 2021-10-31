@@ -12,7 +12,9 @@ class PostsController < ApplicationController
   end
     
   def create
-    @post = Post.create!(post_params)
+    attributes = post_params.clone
+    attributes["post_by"] = (User.find cookies.signed[:user_id])["user_name"]
+    @post = Post.create!(attributes)
     flash[:notice] = "#{@post.title} was successfully created."
     redirect_to posts_path
   end

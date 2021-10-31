@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_28_083333) do
+ActiveRecord::Schema.define(version: 2021_10_31_145434) do
 
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 2021_10_28_083333) do
     t.text "description"
     t.decimal "price"
     t.string "post_by"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at"
+    t.string "google_id"
+    t.string "user_name"
+    t.string "email"
   end
 
 end

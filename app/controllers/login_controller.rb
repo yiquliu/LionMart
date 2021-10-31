@@ -37,7 +37,7 @@ end
 def create
   if user = authenticate_with_google
     cookies.signed[:user_id] = user.id
-    redirect_to user
+    redirect_to posts_path
   else
     redirect_to login_path, alert: 'authentication_failed'
   end
@@ -45,9 +45,15 @@ end
 
 private
 def authenticate_with_google
-  if id_token = flash[:google_sign_in][:id_token]
-    User.find_by google_id: GoogleSignIn::Identity.new(id_token).user_id
-  elsif error = flash[:google_sign_in][:error]
+  if id_token = flash[:google_sign_in]["id_token"]
+    identity = GoogleSignIn::Identity.new(id_token)
+    user = User.find_by google_id: identity.user_id
+    if user.nil?
+      user = { user_name: identity.name, email: identity.email_address, google_id: identity.user_id }
+      User.create(user)
+    end
+    user
+  elsif error = flash[:google_sign_in]["error"]
     logger.error "Google authentication error: #{error}"
     nil
   end
