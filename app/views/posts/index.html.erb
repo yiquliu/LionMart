@@ -1,34 +1,45 @@
-<div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-  <div class="col-lg-6">
-    <%= link_to 'New Post', new_post_path, :class => "btn btn-primary btn-lg active" %>
-    <div class="list-group">
-      <!--TODO post_path(@post)-->
-      <% @posts.each do |post| %>
+<!--  This file is app/views/movies/index.html.erb -->
+<h2>All Movies</h2>
 
-        <a href= "<%=post_path(post) %>"
-           class="list-group-item list-group-item-action flex-column align-items-start"
-        >
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">
-              <%= post.title %>
-            </h5>
+<%#  Part 1: Start here... %>
 
-            <small>
-              $<%= post.price %>
-            </small>
-
-          </div>
-
-          <p class="mb-1 text-black">
-            <%= post.description %>
-          </p>
-
-          <small>
-            <%= post.post_by %>
-          </small>
-
-        </a>
-      <% end %>
+<%= form_tag movies_path, method: :get, id: 'ratings_form' do %>
+  Include:
+  <% @all_ratings.each do |rating| %>
+    <div class="form-check  form-check-inline">
+      <%= label_tag "ratings[#{rating}]", rating, class: 'form-check-label' %>
+      <%= check_box_tag "ratings[#{rating}]", "1",  @ratings_to_show.include?(rating), class: 'form-check-input' %>
     </div>
-  </div>
-</div>
+  <% end %>
+  <%= submit_tag 'Refresh', id: 'ratings_submit', class: 'btn btn-primary' %>
+<% end %>
+
+<table class="table table-striped col-md-12" id="movies">
+  <thead>
+    <tr>
+      <th class="hilite <%= "#{@clickedMovieTitle}" %>"> <%=link_to 'Movie Title', movies_path(:sortByMovieTitle=>true, :ratings=>@ratings_to_show.to_h {|s| [s, 1]}), id: "title_header" %></th>
+      <th>Rating</th>
+      <th class="hilite <%= "#{@clickedReleaseDate}" %>"> <%=link_to 'Release Date', movies_path(:sortByReleaseDate=>true, :ratings=>@ratings_to_show.to_h {|s| [s, 1]}), id: "release_date_header" %></th>
+      <th>More Info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td>
+          <%= movie.title %>
+        </td>
+        <td>
+          <%= movie.rating %>
+        </td>
+        <td>
+          <%= movie.release_date %>
+        </td>
+        <td>
+          <%= link_to "More about #{movie.title}", movie_path(movie) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Add new movie', new_movie_path, :class => 'btn btn-primary' %>
