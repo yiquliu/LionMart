@@ -7,29 +7,27 @@ Feature: manages products on the website for selling
 
   Background: movies have been added to database
 
-    Given the following items exist:
+    Given the following products exist:
       | title                   | price  | description                                                                                                                   |
       | Textbook1               | 1122.0 | Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions |
       | Textbook2               | 3.9    | Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions |
 
-    And  I am on the LionMart home page
-    Then 2 seed products should exist
-
   Scenario: post a new item
     Given I press "New Post"
-    And I create new post with title: Chair, price: 20, description: Bought from IKEA, used for 1 year
+    And I fill in "Title" with "Chair"
+    And I fill in "Price" with "999"
+    And I fill in "Description" with "Bought from IKEA, used for 1 year"
     When I press "Save Changes"
     Then I should see "Chair"
 
   Scenario: edit an existing product
-    Given I press "Textbook1"
-    And I press "Edit"
-    And I edit the post with a new price: 999
-    And I press "Update Post Info"
-    And I press "Back to post list"
-    Then I should see "999"
+    When I go to the edit page for "Textbook1"
+    And  I fill in "Price" with "999"
+    And  I press "Update Post Info"
+    Then the price of "Textbook1" should be "999"
 
   Scenario: delete an existing product
-    Given I press "Textbook2"
+    Given I am on the details page for "Textbook2"
     And I press "Delete"
     Then I should not see "Textbook2"
+
