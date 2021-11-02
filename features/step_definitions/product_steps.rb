@@ -16,7 +16,8 @@ end
   # click_button('Sign up')
 # end
 When /^(?:|I )press "([^"]*)"$/ do |button|
-  click_button(button)
+  click_link_or_button(button)
+
 end
 
 # And /^(?:|I )am "([^"]*)"$/ do |name|

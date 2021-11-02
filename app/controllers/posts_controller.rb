@@ -9,13 +9,18 @@ class PostsController < ApplicationController
   def show
     id = params[:id]
     @post = Post.find(id)
+    @email = User.find_by_user_name(@post.post_by).email
   end
     
   def create
     attributes = post_params.clone
     # print ('hi')
-    print(cookies.signed[:user_id])
-    attributes["post_by"] = (User.find cookies.signed[:user_id])["user_name"]
+    if cookies.signed[:user_id].nil?
+      attributes["post_by"] = "Ruby"
+    else
+      attributes["post_by"] = (User.find cookies.signed[:user_id])["user_name"]
+      # attributes["email"] = ()
+    end
     @post = Post.create!(attributes)
     flash[:notice] = "#{@post.title} was successfully created."
     redirect_to posts_path
