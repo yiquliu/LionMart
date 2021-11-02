@@ -13,6 +13,8 @@ class PostsController < ApplicationController
     
   def create
     attributes = post_params.clone
+    # print ('hi')
+    print(cookies.signed[:user_id])
     attributes["post_by"] = (User.find cookies.signed[:user_id])["user_name"]
     @post = Post.create!(attributes)
     flash[:notice] = "#{@post.title} was successfully created."

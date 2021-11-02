@@ -1,12 +1,27 @@
+# require 'uri'
+# require 'cgi'
+# require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
+# require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 Given /the following products exist/ do |product_table|
   product_table.hashes.each do |product|
     Post.create product
   end
 end
-
+# And /^I have logged in as "([^"]*)"$/ do
+#   visit(posts_path)
+  # fill_in('Email', :with => email)
+  # fill_in('Email', :with => email)
+  # fill_in('Password', :with => 's3cr3t')
+  # fill_in('Password Confirmation', :with => 's3cr3t')
+  # click_button('Sign up')
+# end
 When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
+
+# And /^(?:|I )am "([^"]*)"$/ do |name|
+#   User.create name
+# end
 
 And /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
