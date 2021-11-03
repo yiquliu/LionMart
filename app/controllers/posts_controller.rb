@@ -9,7 +9,12 @@ class PostsController < ApplicationController
   def show
     id = params[:id]
     @post = Post.find(id)
-    @email = User.find_by_user_name(@post.post_by).email
+    if @post.post_by.nil?
+      @email = "test@columbia.edu"
+    else
+      @email = User.find_by_user_name(@post.post_by).email
+    end
+#     @email = User.find_by_user_name(@post.post_by).email
   end
     
   def create
