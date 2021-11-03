@@ -30,3 +30,4 @@ Feature: manages products on the website for selling
     Given I am on the details page for "Textbook2"
     And I press "Delete"
     Then I should not see "Textbook2"
+    But I should see "Textbook1"
