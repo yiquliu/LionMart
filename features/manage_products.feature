@@ -3,7 +3,8 @@ Feature: manages products on the website for selling
   As a seller
   So that I can sell items I no longer need
   I want to post a item I would like to sell
-  I also want to edit existing products on my page
+  I also want to edit or delete existing products 
+  on my page
 
   Background: movies have been added to database
 
