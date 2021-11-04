@@ -2,8 +2,12 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
   before(:all) do
-    Post.find_by(:title => "Halloween Costume").destroy
-    Post.find_by(:title => "Used Monitor").destroy
+    unless Post.where(:title => "Halloween Costume").empty?
+      Post.find_by(:title => "Halloween Costume").destroy
+    end
+    unless Post.where(:title => "Used Monitor").empty?
+      Post.find_by(:title => "Used Monitor").destroy
+    end
     Post.create(:title => "Halloween Costume", :post_by => "Adam Green",
                  :price => 21, :description => "costume")
     Post.create(:title => "Used Monitor", :post_by => "Owen Brooks",
@@ -12,6 +16,9 @@ RSpec.describe PostsController, type: :controller do
 
   describe "create" do
     it "creates a post with details" do
+      if User.where(:user_name => "Janice Wills").empty?
+        User.create({:user_name => "Janice Wills", :google_id => 123321, :email => "jw@columbia.edu"})
+      end
       cookies.signed[:user_id] = (User.find_by_user_name("Janice Wills")).id
       get :create, params: {:post => {:title => "Halloween Costume", :post_by => "Adam Green",
                                :price => 21, :description => "costume"}}

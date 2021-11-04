@@ -13,10 +13,11 @@ RSpec.describe LoginController, type: :controller do
     end
   end
   before(:all) do
-    (User.find_by_user_name "Adam Green").destroy
-    if User.where(:user_name => "Adam Green").empty?
-      User.create(:google_id => "1234", :user_name => "Adam Green",:email => "ag1234@columbia.edu")
+    unless User.where(:user_name => "Adam Green").empty?
+      (User.find_by_user_name "Adam Green").destroy
     end
+
+    User.create(:google_id => "1234", :user_name => "Adam Green",:email => "ag1234@columbia.edu")
   end
 
   describe "create" do
