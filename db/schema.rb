@@ -18,13 +18,14 @@ ActiveRecord::Schema.define(version: 2021_10_31_145434) do
     t.string "title", null: false
     t.text "description"
     t.decimal "price"
-    t.string "post_by"
+    t.string "post_by", primary_key: true
+    t.string "url"
   end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at"
-    t.string "google_id"
-    t.string "user_name"
+    t.string "google_id", unique: true
+    t.string "user_name", primary_key: true
     t.string "email"
   end
 
