@@ -1,0 +1,36 @@
+<div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+  <div class="col-lg-6">
+    <h2>My Posts</h2>
+    <%= link_to 'Back', posts_path, :class => "btn btn-primary btn-lg active" %>
+
+    <div class="list-group">
+      <!--TODO post_path(@post)-->
+      <% @posts.each do |post| %>
+
+        <a href= "<%=post_path(post) %>"
+           class="list-group-item list-group-item-action flex-column align-items-start"
+        >
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">
+              <%= post.title %>
+            </h5>
+
+            <small>
+              $<%= post.price %>
+            </small>
+
+          </div>
+
+          <p class="mb-1 text-black">
+            <%= post.description %>
+          </p>
+
+          <small>
+            <%= post.post_by %>
+          </small>
+
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>

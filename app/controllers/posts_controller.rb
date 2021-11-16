@@ -48,6 +48,10 @@ class PostsController < ApplicationController
     flash[:notice] = "Post '#{@post.title}' deleted."
     redirect_to posts_path
   end
+
+  def myPost
+    @posts = Post.where(post_by: (User.find cookies.signed[:user_id])["user_name"])
+  end
     
   private
   # Making "internal" methods private is not required, but is a common practice.

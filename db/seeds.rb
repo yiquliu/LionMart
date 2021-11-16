@@ -3,19 +3,19 @@
 #
 posts = [{:title => 'Textbook1',
           :description=>"Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions",
-          :post_by => "somebody",
+          :post_by => "Yiqu Liu",
           :price => 1122},
          {:title => 'Textbook2',
           :description=>"Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions Some descriptions",
-          :post_by => "somebody",
+          :post_by => "Jing Dong",
           :price => 3.9}
 ]
 
 users = [{:google_id => 'yl4617',
-          :user_name => "somebody",
+          :user_name => "Yiqu Liu",
           :email => 'yl4617@columbia.edu'},
          {:google_id => 'jd3768',
-          :user_name => "somebody",
+          :user_name => "Jing Dong",
           :email => 'jd3768@columbia.edu'}
 ]
 

@@ -1,6 +1,8 @@
 <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
   <div class="col-lg-6">
     <%= link_to 'New Post', new_post_path, :class => "btn btn-primary btn-lg active" %>
+    <%= link_to 'My Posts', mypost_path, :class => "btn btn-primary btn-lg active" %>
+
     <div class="list-group">
       <!--TODO post_path(@post)-->
       <% @posts.each do |post| %>
