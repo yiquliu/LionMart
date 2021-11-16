@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def show
     id = params[:id]
+    @current_user = (User.find cookies.signed[:user_id])["user_name"]
     @post = Post.find(id)
     if @post.post_by.nil?
       @email = "test@columbia.edu"
