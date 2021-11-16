@@ -11,6 +11,7 @@
   <li>
     Post By:
     <%= @post.post_by %>
+    <%= link_to 'see his posts', user_posts_path(@post.post_by), :class => 'btn btn-primary col-2' %>
   </li>
   <li>
     Email:

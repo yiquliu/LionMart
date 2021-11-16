@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @current_user = (User.find cookies.signed[:user_id])["user_name"]
   end
 
   def show
@@ -50,8 +51,9 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  def myPost
-    @posts = Post.where(post_by: (User.find cookies.signed[:user_id])["user_name"])
+  def userPosts
+    @user_name = params[:user_name]
+    @posts = Post.where(post_by: @user_name)
   end
     
   private
