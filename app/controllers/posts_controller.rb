@@ -44,9 +44,12 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:notice] = "Post '#{@post.title}' deleted."
-    redirect_to posts_path
+    @user_name = cookies.signed[:user_id]
+    if @post.post_by == @user_name
+      @post.destroy
+      flash[:notice] = "Post '#{@post.title}' deleted."
+      redirect_to posts_path
+    end
   end
     
   private
