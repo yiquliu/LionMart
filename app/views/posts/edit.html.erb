@@ -1,13 +1,12 @@
 <h2>Edit Existing Post</h2>
-<%= form_tag post_path(@post), :method => :put do %>
+<%= form_for @post do |f|%>
   <%= label :post, :title, 'Title', :class => 'col-form-label' %>
   <%= text_field :post, :title, :class => 'form-control' %>
   <%= label :post, :price, 'Price', :class => 'col-form-label'  %>
   <%= number_field :post, :price, :class => 'form-control' %>
   <%= label :post, :description, 'Description', :class => 'col-form-label'  %>
   <%= text_field :post, :description, :class => 'form-control' %>
-  <%= label :post, :avatar, 'Profile Photo', :class => 'col-form-label'  %>
-  <%= file_field :post, :avatar, :class => 'form-control' %>
+  <%= f.file_field :photo, accept: 'image/png,image/jpeg'%>
   <br/>
   <%= submit_tag 'Update Post Info', :class => 'btn btn-primary' %>
   <%= link_to 'Cancel', posts_path, :class => 'btn btn-secondary' %>
