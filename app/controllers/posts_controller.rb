@@ -4,14 +4,29 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @current_user = (User.find cookies.signed[:user_id])["user_name"]
+    $current = nil
+    if cookies.signed[:user_id].nil?
+      @current_user = $current
+      if @current_user.nil?
+        @current_user = "test_user"
+      end
+    else
+      @current_user = (User.find cookies.signed[:user_id])["user_name"]
+    end
   end
 
   def show
     id = params[:id]
-    @current_user = (User.find cookies.signed[:user_id])["user_name"]
+    if cookies.signed[:user_id].nil?
+      @current_user = $current
+      if @current_user.nil?
+        @current_user = "test_user"
+      end
+    else
+      @current_user = (User.find cookies.signed[:user_id])["user_name"]
+    end
     @post = Post.find(id)
-    if @post.post_by.nil?
+    if @post.post_by.nil? or User.find_by_user_name(@post.post_by).nil?
       @email = "test@columbia.edu"
     else
       @email = User.find_by_user_name(@post.post_by).email

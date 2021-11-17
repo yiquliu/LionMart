@@ -11,7 +11,7 @@
   <li>
     Post By:
     <%= @post.post_by %>
-    <%= link_to 'see his posts', user_posts_path(@post.post_by), :class => 'btn btn-primary col-2' %>
+    <%= link_to 'see his/her posts', user_posts_path(@post.post_by), :class => 'btn btn-primary col-2' %>
   </li>
   <li>
     Email:
@@ -24,8 +24,8 @@
 </ul>
 
 <div class="row">
-  <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary col-2' %>
   <%if @current_user == @post.post_by %>
+    <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary col-2' %>
     <%= link_to 'Delete',
                 post_path(@post),
                 'data-method' => 'delete',
