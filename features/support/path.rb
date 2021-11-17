@@ -13,14 +13,14 @@ module NavigationHelpers
     when /^the (LionMart)?home\s?page$/ then '/posts'
     when /^the create new post page$/ then '/posts/new'
 
+    when /^the home page for "(.*)"$/ then
+      user_posts_path(User.find_by_user_name($1).user_name)
+
     when /^the edit page for "(.*)"$/
       edit_post_path(Post.find_by_title($1))
 
     when /^the details page for "(.*)"$/
       post_path(Post.find_by_title($1))
-
-    # when /^the Similar Movies page for "(.*)"$/
-    #   similar_posts_path(Post.find_by_title($1))
 
     else
       begin
