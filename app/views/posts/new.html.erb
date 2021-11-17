@@ -7,6 +7,11 @@
   <%= number_field :post, :price, :class => 'form-control' %>
   <%= label :post, :description, 'Description', :class => 'col-form-label'  %>
   <%= text_field :post, :description, :class => 'form-control' %>
+  <%# if post.avatar.attached? %>
+    <%#= image_tag post.avatar, style:"width:500px; display: block" %>
+  <%# end %>
+  <%= label :post, :avatar, 'Profile Photo', :class => 'col-form-label'  %>
+  <%= file_field :post, :avatar, :class => 'form-control' %>
   <br/>
   <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
   <%= link_to 'Cancel', posts_path, :class => 'btn btn-secondary' %>

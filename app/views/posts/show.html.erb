@@ -21,6 +21,12 @@
     Description:
     <%= @post.description %>
   </li>
+  <% if @post.avatar.attached? %>
+    <p>
+      <%= image_tag @post.avatar.variant(resize:"500x500") %>
+    </p>
+  <% end %>
+
 </ul>
 
 <div class="row">
