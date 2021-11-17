@@ -23,7 +23,7 @@
   </li>
   <% if @post.avatar.attached? %>
     <p>
-      <%= image_tag @post.avatar.variant(resize:"500x500") %>
+      <image src="<%= url_for(@post.avatar) %>"/>
     </p>
   <% end %>
 

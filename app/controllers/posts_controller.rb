@@ -29,7 +29,7 @@ class PostsController < ApplicationController
       # attributes["email"] = ()
     end
     @post = Post.create!(attributes)
-    @post.avatar.attach(params[:avatar])
+    @post.avatar.attach(params[:post][:photo])
     flash[:notice] = "#{@post.title} was successfully created."
     redirect_to posts_path
   end
@@ -56,7 +56,7 @@ class PostsController < ApplicationController
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.  
   def post_params
-    params.require(:post).permit(:title, :price, :description, :post_by, :avatar)
+    params.require(:post).permit(:title, :price, :description, :post_by)
     #to do avatart!
   end
 
