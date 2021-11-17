@@ -4,12 +4,29 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    $current = nil
+    if cookies.signed[:user_id].nil?
+      @current_user = $current
+      if @current_user.nil?
+        @current_user = "test_user"
+      end
+    else
+      @current_user = (User.find cookies.signed[:user_id])["user_name"]
+    end
   end
 
   def show
     id = params[:id]
+    if cookies.signed[:user_id].nil?
+      @current_user = $current
+      if @current_user.nil?
+        @current_user = "test_user"
+      end
+    else
+      @current_user = (User.find cookies.signed[:user_id])["user_name"]
+    end
     @post = Post.find(id)
-    if @post.post_by.nil?
+    if @post.post_by.nil? or User.find_by_user_name(@post.post_by).nil?
       @email = "test@columbia.edu"
     else
       @email = User.find_by_user_name(@post.post_by).email
@@ -47,6 +64,11 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:notice] = "Post '#{@post.title}' deleted."
     redirect_to posts_path
+  end
+
+  def userPosts
+    @user_name = params[:user_name]
+    @posts = Post.where(post_by: @user_name)
   end
     
   private

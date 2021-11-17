@@ -7,6 +7,12 @@ Given /the following products exist/ do |product_table|
     Post.create product
   end
 end
+
+Given /the following users exist/ do |user_table|
+  user_table.hashes.each do |user|
+    User.create user
+  end
+end
 # And /^I have logged in as "([^"]*)"$/ do
 #   visit(posts_path)
   # fill_in('Email', :with => email)
@@ -23,6 +29,10 @@ end
 # And /^(?:|I )am "([^"]*)"$/ do |name|
 #   User.create name
 # end
+Given /^(?:|I )am "([^"]*)"$/ do |name|
+  User.create(user_name: name)
+  $current = name
+end
 
 And /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
@@ -43,6 +53,7 @@ Then /^(?:|I )should not see "([^"]*)"$/ do |text|
     assert page.has_no_content?(text)
   end
 end
+
 
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
