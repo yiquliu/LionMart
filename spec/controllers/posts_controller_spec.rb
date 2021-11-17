@@ -2,12 +2,6 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
   before(:all) do
-    unless Post.where(:title => "Halloween Costume").empty?
-      Post.find_by(:title => "Halloween Costume").destroy
-    end
-    unless Post.where(:title => "Used Monitor").empty?
-      Post.find_by(:title => "Used Monitor").destroy
-    end
     Post.create(:title => "Halloween Costume", :post_by => "Adam Green",
                  :price => 21, :description => "costume")
     Post.create(:title => "Used Monitor", :post_by => "Owen Brooks",
