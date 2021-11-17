@@ -75,5 +75,16 @@ RSpec.describe PostsController, type: :controller do
       expect(flash[:notice]).to match("Post 'Used Monitor' deleted.")
     end
   end
+
+  describe "userPosts" do
+    it "shows the posts of a specific user" do
+      post = Post.create(:title => "Used Monitor", :post_by => "Owen Brooks",
+                         :price => 21, :description => "")
+      get :userPosts, params: {:user_name => "Owen Brooks"}
+
+      expect(assigns(:posts)).to eq(Post.where(:post_by => "Owen Brooks"))
+
+    end
+  end
 end
 
