@@ -1,12 +1,18 @@
 <h2>Create New Post</h2>
 
-<%= form_tag posts_path, :class => 'form' do %>
+<%= form_for Post.new do |f|%>
   <%= label :post, :title, 'Title', :class => 'col-form-label' %>
   <%= text_field :post, :title, :class => 'form-control' %>
   <%= label :post, :price, 'Price', :class => 'col-form-label'  %>
   <%= number_field :post, :price, :class => 'form-control' %>
   <%= label :post, :description, 'Description', :class => 'col-form-label'  %>
   <%= text_field :post, :description, :class => 'form-control' %>
+  <%# if post.avatar.attached? %>
+    <%#= image_tag post.avatar, style:"width:500px; display: block" %>
+  <%# end %>
+  <%= f.file_field :photo, accept: 'image/png,image/jpeg'%>
+
+
   <br/>
   <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
   <%= link_to 'Cancel', posts_path, :class => 'btn btn-secondary' %>

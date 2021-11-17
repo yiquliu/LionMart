@@ -1,9 +1,11 @@
 class PostsController < ApplicationController
+
+
   def new
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.with_attached_avatar
     $current = nil
     if cookies.signed[:user_id].nil?
       @current_user = $current
@@ -44,6 +46,7 @@ class PostsController < ApplicationController
       # attributes["email"] = ()
     end
     @post = Post.create!(attributes)
+    @post.avatar.attach(params[:post][:photo])
     flash[:notice] = "#{@post.title} was successfully created."
     redirect_to posts_path
   end
@@ -76,6 +79,7 @@ class PostsController < ApplicationController
   # This helps make clear which methods respond to requests, and which ones do not.  
   def post_params
     params.require(:post).permit(:title, :price, :description, :post_by)
+    #to do avatart!
   end
 
 end
