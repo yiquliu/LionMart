@@ -58,6 +58,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find params[:id]
     @post.update!(post_params)
+    @post.avatar.attach(params[:post][:photo])
     flash[:notice] = "#{@post.title} was successfully updated."
     redirect_to post_path(@post)
   end
