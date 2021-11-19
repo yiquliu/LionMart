@@ -76,6 +76,6 @@ Rails.application.configure do
   config.hosts << "command-phantom-9292.codio.io"
 
   # Store files locally. todo change later
-  config.active_storage.service = :amazon
+  config.active_storage.service = :local
 
 end
