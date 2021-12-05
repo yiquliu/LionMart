@@ -15,10 +15,10 @@
 
     <div class="bg">
       <div class="row gx-4 gx-lg-5 justify-content-center mb-5 posts_position">
-        <h2 class="post_personal"><%= @user_name %>'s Posts</h2>
-        <div class="col-lg-6">
+        <div class="col-lg-20">
 
-          <%= link_to 'Back', posts_path, :class => "btn btn-primary btn-lg active" %>
+          <%= link_to 'Back', posts_path, :class => "btn btn-primary btn-lg active btn_position" %>
+        <h1 class="post_personal"><%= @user_name %>'s Posts</h1>
 
           <div class="list-group">
             <!--TODO post_path(@post)-->
@@ -47,7 +47,7 @@
               </a>
             <% end %>
           </div>
-        </div>
+          </div>
       </div>
     </div>
   </body>

@@ -43,6 +43,11 @@
 
 .post_personal {
   position:relative;
-  left:360px;
+  left:0px;
+}
 
+.btn_position {
+  position:fixed;
+  left: 10px;
+  top: 160px;
 }
