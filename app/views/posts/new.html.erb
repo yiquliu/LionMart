@@ -1,19 +1,41 @@
-<h2>Create New Post</h2>
-
-<%= form_for Post.new do |f|%>
-  <%= label :post, :title, 'Title', :class => 'col-form-label' %>
-  <%= text_field :post, :title, :class => 'form-control' %>
-  <%= label :post, :price, 'Price', :class => 'col-form-label'  %>
-  <%= number_field :post, :price, :class => 'form-control' %>
-  <%= label :post, :description, 'Description', :class => 'col-form-label'  %>
-  <%= text_field :post, :description, :class => 'form-control' %>
-  <%# if post.avatar.attached? %>
-    <%#= image_tag post.avatar, style:"width:500px; display: block" %>
-  <%# end %>
-  <%= f.file_field :image, accept: 'image/png,image/jpeg'%>
-
-
-  <br/>
-  <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
-  <%= link_to 'Cancel', posts_path, :class => 'btn btn-secondary' %>
-<% end %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Lion Mart</title>
+    <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <nav class="navbar navbar-light nav_color">
+      <a class="navbar-brand" href="#">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStmbLjCfLHrRYZKhROfHItVTaQPGCSLdzWbRPX2gLUc6tDVZSPL01pLSdO9kToTixpWCM&usqp=CAU" height="50%" width="50%" class="d-inline-block align-top" alt="" loading="lazy">
+        <div class="nav_text">Lion Mart</div>
+      </a>
+    </nav>
+    <div class="bg">
+      <div class="posts_position">
+        <div class="">
+          <h2>Create New Post</h2>
+          <div class="">
+            <%= form_for Post.new do |f|%>
+              <%= label :post, :title, 'Title', :class => 'col-form-label' %>
+              <%= text_field :post, :title, :class => 'form-control' %>
+              <%= label :post, :price, 'Price', :class => 'col-form-label'  %>
+              <%= number_field :post, :price, :class => 'form-control' %>
+              <%= label :post, :description, 'Description', :class => 'col-form-label'  %>
+              <%= text_field :post, :description, :class => 'form-control' %>
+              <%# if post.avatar.attached? %>
+                <%#= image_tag post.avatar, style:"width:500px; display: block" %>
+              <%# end %>
+              <%= f.file_field :image, accept: 'image/png,image/jpeg'%>
+              <br/>
+              <br/>
+              <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
+              <%= link_to 'Cancel', posts_path, :class => 'btn btn-secondary' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
