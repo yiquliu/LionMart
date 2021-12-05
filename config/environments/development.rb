@@ -73,7 +73,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.hosts << "command-phantom-9292.codio.io"
 
-  # Store files locally. todo change later
+  # Store files to s3.
   config.active_storage.service = :amazon
 
 end
