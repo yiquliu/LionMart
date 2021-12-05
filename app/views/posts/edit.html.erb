@@ -6,7 +6,7 @@
   <%= number_field :post, :price, :class => 'form-control' %>
   <%= label :post, :description, 'Description', :class => 'col-form-label'  %>
   <%= text_field :post, :description, :class => 'form-control' %>
-  <%= f.file_field :photo, accept: 'image/png,image/jpeg'%>
+  <%= f.file_field :image, accept: 'image/png,image/jpeg'%>
   <br/>
   <%= submit_tag 'Update Post Info', :class => 'btn btn-primary' %>
   <%= link_to 'Cancel', posts_path, :class => 'btn btn-secondary' %>
