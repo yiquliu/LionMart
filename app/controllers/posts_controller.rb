@@ -46,7 +46,7 @@ class PostsController < ApplicationController
       # attributes["email"] = ()
     end
     @post = Post.create!(attributes)
-    @post.avatar.attach(params[:post][:photo])
+    @post.avatar.attach(params[:post][:image])
     flash[:notice] = "#{@post.title} was successfully created."
     redirect_to posts_path
   end
@@ -58,7 +58,9 @@ class PostsController < ApplicationController
   def update
     @post = Post.find params[:id]
     @post.update!(post_params)
-    @post.avatar.attach(params[:post][:photo])
+    unless params[:post][:image].nil?
+      @post.avatar.attach(params[:post][:image])
+    end
     flash[:notice] = "#{@post.title} was successfully updated."
     redirect_to post_path(@post)
   end
