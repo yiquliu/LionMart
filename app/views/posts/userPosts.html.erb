@@ -1,36 +1,52 @@
-<div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-  <div class="col-lg-6">
-    <h2><%= @user_name %>'s Posts</h2>
-    <%= link_to 'Back', posts_path, :class => "btn btn-primary btn-lg active" %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Lion Mart</title>
+    <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <nav class="navbar navbar-light nav_color">
+      <a class="navbar-brand" href="#">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStmbLjCfLHrRYZKhROfHItVTaQPGCSLdzWbRPX2gLUc6tDVZSPL01pLSdO9kToTixpWCM&usqp=CAU" height="50%" width="50%" class="d-inline-block align-top" alt="" loading="lazy">
+        <div class="nav_text">Lion Mart</div>
+      </a>
+    </nav>
+    <div class="bg">
+      <div class="row gx-4 gx-lg-5 justify-content-center mb-5 posts_position">
+        <div class="col-lg-6">
+          <h2><%= @user_name %>'s Posts</h2>
+          <%= link_to 'Back', posts_path, :class => "btn btn-primary btn-lg active" %>
 
-    <div class="list-group">
-      <!--TODO post_path(@post)-->
-      <% @posts.each do |post| %>
+          <div class="list-group">
+            <!--TODO post_path(@post)-->
+            <% @posts.each do |post| %>
 
-        <a href= "<%=post_path(post) %>"
-           class="list-group-item list-group-item-action flex-column align-items-start"
-        >
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">
-              <%= post.title %>
-            </h5>
+              <a href="<%=post_path(post) %>" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">
+                    <%= post.title %>
+                  </h5>
 
-            <small>
-              $<%= post.price %>
-            </small>
+                  <small>
+                    $<%= post.price %>
+                  </small>
 
+                </div>
+
+                <p class="mb-1 text-black">
+                  <%= post.description %>
+                </p>
+
+                <small>
+                  <%= post.post_by %>
+                </small>
+
+              </a>
+            <% end %>
           </div>
-
-          <p class="mb-1 text-black">
-            <%= post.description %>
-          </p>
-
-          <small>
-            <%= post.post_by %>
-          </small>
-
-        </a>
-      <% end %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </body>
+</html>
