@@ -46,7 +46,7 @@ class PostsController < ApplicationController
       # attributes["email"] = ()
     end
     @post = Post.create!(attributes)
-    @post.avatar.attach(params[:post][:photo])
+    @post.avatar.attach(params[:post][:image])
     flash[:notice] = "#{@post.title} was successfully created."
     redirect_to posts_path
   end
