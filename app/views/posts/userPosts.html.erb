@@ -16,8 +16,6 @@
     <div class="bg">
       <div class="row gx-4 gx-lg-5 justify-content-center mb-5 posts_position">
         <div class="col-lg-20">
-
-          <%= link_to 'Back', posts_path, :class => "btn btn-primary btn-lg btn_position" %>
         <h1 class="post_personal"><%= @user_name %>'s Posts</h1>
 
           <div class="list-group">
@@ -47,6 +45,8 @@
               </a>
             <% end %>
           </div>
+          <br>
+          <%= link_to 'Back to the list', posts_path, :class => "btn btn-primary btn-lg" %>
           </div>
       </div>
     </div>

@@ -47,23 +47,17 @@
 }
 
 .btn_position {
-  position:fixed;
-  left: 10px;
-  top: 160px;
+  position:relative;
+  left: -150px;
+  top: -80px;
 }
 
-.edit_bg {
-  background-color: white;
-  opacity: 0.7;
+.btn_color {
+  background-color: red;
 }
 
-.edit_bg::before {
-      content: "";
-      background-size: cover;
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      opacity: 0.5;
-}
+// .edit_back_post {
+//   position:relative;
+//   left: -150px;
+//   top: -80px;
+// }

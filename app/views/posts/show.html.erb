@@ -15,7 +15,6 @@
     <div class="bg">
       <div class="posts_position">
         <div class="">
-          <%= link_to 'Back to post list', posts_path, :class => 'btn btn-primary btn-lg col-20 btn_position' %>
           <h2>Details of the product</h2>
           <div class="">
             <ul id="details">
@@ -48,17 +47,16 @@
                 <%#= image_tag @post.avatar.variant(resize: "250x250") %>
                   <!-- </p>-->
                 <% end %>
-
               </ul>
-
               <div class="row">
                 <%if @current_user == @post.post_by %>
                   <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary col-20' %>
+                  <%= link_to 'Back to the list', posts_path, :class => 'btn btn-primary col-20' %>
                   <%= link_to 'Delete', post_path(@post), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-20' %>
+                <%else%>
+                  <%= link_to 'Back to the list', posts_path, :class => 'btn btn-primary btn-lg col-2' %>
                 <%end %>
-
               </div>
-
             </div>
 
           </div>
