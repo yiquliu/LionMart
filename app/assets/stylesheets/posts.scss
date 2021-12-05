@@ -51,3 +51,19 @@
   left: 10px;
   top: 160px;
 }
+
+.edit_bg {
+  background-color: white;
+  opacity: 0.7;
+}
+
+.edit_bg::before {
+      content: "";
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.5;
+}
