@@ -22,7 +22,8 @@
 
 .bg {
     position: relative;
-    height: 100vh;
+    min-height: 200vh;
+    height : auto;
     width: 100%;
     display: flex;
     align-items: center;
@@ -32,7 +33,8 @@
 .bg::before {
       content: "";
       background-image: url('https://sps.columbia.edu/sites/default/files/styles/social_share_1200x630/public/2019-06/homepage-hero2.jpg?h=ddb6133e&itok=2Yyk1L_O');
-      background-size: cover;
+      // background-size: cover;
+      background-repeat: repeat;
       position: absolute;
       top: 0px;
       right: 0px;
@@ -48,8 +50,8 @@
 
 .btn_position {
   position:relative;
-  left: -150px;
-  top: -80px;
+  left: 10%;
+  top: 20%;
 }
 
 .btn_color {
