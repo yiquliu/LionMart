@@ -41,7 +41,7 @@
               </li>
               <% if @post.avatar.attached? %>
                 <p>
-                  <image src="<%= url_for(@post.avatar) %>" width="20%" height="auto"/>
+                  <image src="<%= url_for(@post.avatar) %>" width="50%" height="auto"/>
                 </p>
                 <!-- <p>-->
                 <%#= image_tag @post.avatar.variant(resize: "250x250") %>
