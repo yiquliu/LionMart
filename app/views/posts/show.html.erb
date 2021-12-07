@@ -48,13 +48,13 @@
                   <!-- </p>-->
                 <% end %>
               </ul>
-              <div class="row">
+              <div class="row btn_position">
                 <%if @current_user == @post.post_by %>
                   <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary col-20' %>
                   <%= link_to 'Back to the list', posts_path, :class => 'btn btn-primary col-20' %>
                   <%= link_to 'Delete', post_path(@post), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-20' %>
                 <%else%>
-                  <%= link_to 'Back to the list', posts_path, :class => 'btn btn-primary btn-lg active btn_position' %>
+                  <%= link_to 'Back to the list', posts_path, :class => 'btn btn-primary btn-lg active' %>
                 <%end %>
               </div>
             </div>
