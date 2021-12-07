@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.with_attached_avatar.reverse()
+    @posts = Post.all.with_attached_avatar.sort_by { |created_at |  }.reverse()
     $current = nil
     if cookies.signed[:user_id].nil?
       @current_user = $current
