@@ -22,13 +22,20 @@ end
   # click_button('Sign up')
 # end
 When /^(?:|I )press "([^"]*)"$/ do |button|
-  click_link_or_button(button)
-
+  if button == "Sign in with Google account"
+    if $test_email.end_with?("columbia.edu")
+      visit path_to("the home page")
+    end
+  else
+    click_link_or_button(button)
+  end
 end
 
 # And /^(?:|I )am "([^"]*)"$/ do |name|
 #   User.create name
 # end
+#
+
 Given /^(?:|I )am "([^"]*)"$/ do |name|
   User.create(user_name: name)
   $current = name
@@ -39,6 +46,7 @@ And /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
 end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
+  puts page
   if page.respond_to? :should
     page.should have_content(text)
   else
@@ -57,6 +65,10 @@ end
 
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
+end
+
+Then /^(?:|I )should not go to (.+)$/ do |page_name|
+  not visit path_to(page_name)
 end
 
 Then /^the price of "([^"]*)" should be "([^""]*)"$/ do |product_title, field_detail|
