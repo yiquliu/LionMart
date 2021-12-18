@@ -20,9 +20,17 @@ Feature: manages products on the website for selling
 
   Scenario: check user's homepage
     Given I am "yiqu"
-    When  I go to the home page for "yiqu"
+    When  I am on the LionMart home page
+    And   I press "My Posts"
     Then  I should see "Textbook2"
     But   I should not see "Textbook1"
+
+  Scenario: check other user's homepage
+    Given I am "yiqu"
+    When  I go to the details page for "Textbook1"
+    And   I press "see his/her posts"
+    Then  I should see "Textbook1"
+    But   I should not see "Textbook2"
 
   Scenario: post a new item
     Given I am on the create new post page
