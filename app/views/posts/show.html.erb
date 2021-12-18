@@ -1,30 +1,66 @@
-<h2>Details of the product</h2>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Lion Mart</title>
+    <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <nav class="navbar navbar-light nav_color">
+      <a class="navbar-brand" href="#">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStmbLjCfLHrRYZKhROfHItVTaQPGCSLdzWbRPX2gLUc6tDVZSPL01pLSdO9kToTixpWCM&usqp=CAU" height="50%" width="50%" class="d-inline-block align-top" alt="" loading="lazy">
+        <div class="nav_text">Lion Mart</div>
+      </a>
+    </nav>
+    <div class="bg">
+      <div class="posts_position">
+        <div class="">
+          <h2>Details of the product</h2>
+          <div class="">
+            <ul id="details">
+              <li>
+                Title:
+                <%= @post.title %>
+              </li>
+              <li>
+                Price:
+                <%= @post.price %>
+              </li>
+              <li>
+                Post By:
+                <%= @post.post_by %>
+                <%= link_to 'see his/her posts', user_posts_path(@post.post_by), :class => 'btn btn-primary col-20' %>
+              </li>
+              <li>
+                Email:
+                <%= @email %>
+              </li>
+              <li>
+                Description:
+                <%= @post.description %>
+              </li>
+              <% if @post.avatar.attached? %>
+                <p>
+                  <image src="<%= url_for(@post.avatar) %>" width="50%" height="auto"/>
+                </p>
+                <!-- <p>-->
+                <%#= image_tag @post.avatar.variant(resize: "250x250") %>
+                  <!-- </p>-->
+                <% end %>
+              </ul>
+              <div class="row btn_position">
+                <%if @current_user == @post.post_by %>
+                  <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary col-20' %>
+                  <%= link_to 'Back to the list', posts_path, :class => 'btn btn-primary col-20' %>
+                  <%= link_to 'Delete', post_path(@post), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-20' %>
+                <%else%>
+                  <%= link_to 'Back to the list', posts_path, :class => 'btn btn-primary btn-lg active' %>
+                <%end %>
+              </div>
+            </div>
 
-<ul id="details">
-  <li>
-    Title:
-    <%= @post.title %>
-  </li>
-  <li>
-    Price:
-    <%= @post.price %>
-  </li>
-  <li>
-    Post By:
-    <%= @post.post_by %>
-  </li>
-  <li>
-    Email:
-    <%= @email %>
-  </li>
-    <li>
-    Description:
-    <%= @post.description %>
-  </li>
-</ul>
-
-<div class="row">
-  <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary col-2' %>
-  <%= link_to 'Delete', post_path(@post), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
-  <%= link_to 'Back to post list', posts_path, :class => 'btn btn-primary col-2' %>
-</div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>

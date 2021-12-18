@@ -50,7 +50,7 @@ def authenticate_with_google
     user = User.find_by google_id: identity.user_id
     if user.nil?
       user = { user_name: identity.name, email: identity.email_address, google_id: identity.user_id }
-      User.create(user)
+      user = User.create(user)
     end
     user
   elsif error = flash[:google_sign_in]["error"]

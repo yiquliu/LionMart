@@ -1,3 +1,77 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.nav_text {
+  left: 130px;
+  bottom: 90px;
+  font-size: 40px;
+  font-family: serif;
+  color: white;
+  position:relative;
+}
+
+.nav_color {
+  background-color: #0088ce;
+  height: 150px;
+}
+
+.show_posts_position {
+  top: 90px;
+  width: 100%;
+  position:absolute;
+}
+
+.posts_position {
+  top: 90px;
+  width: 50%;
+  position:absolute;
+}
+
+.bg {
+    position: relative;
+    min-height: 200vh;
+    height : auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg::before {
+      content: "";
+      background-image: url('https://sps.columbia.edu/sites/default/files/styles/social_share_1200x630/public/2019-06/homepage-hero2.jpg?h=ddb6133e&itok=2Yyk1L_O');
+      // background-size: cover;
+      background-repeat: repeat;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.5;
+}
+
+.post_personal {
+  position:relative;
+  left:0px;
+}
+
+.btn_position {
+  top: 20%;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_color {
+  background-color: red;
+}
+.btn_two {
+  width: 150px;
+}
+
+// .edit_back_post {
+//   position:relative;
+//   left: -150px;
+//   top: -80px;
+// }

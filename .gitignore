@@ -16,7 +16,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+/.idea
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
@@ -41,3 +41,5 @@ yarn-debug.log*
 
 #Ignore the .idea folder
 /.idea
+#Ignoe the coverage
+coverage

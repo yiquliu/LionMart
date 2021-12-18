@@ -35,7 +35,6 @@ end
 #   User.create name
 # end
 #
-
 Given /^(?:|I )am "([^"]*)"$/ do |name|
   User.create(user_name: name)
   $current = name

@@ -4,7 +4,12 @@
 
   	bundle install
   	bundle exec rake db:migrate:reset 
- 	bundle exec rake db:seed
+    bundle exec rake db:seed
+  
+### Run Cucumber:
+
+    yarn add bootstrap
+    cucumber features/manage_products.feature
 
 
 ### Service is deployed to:
