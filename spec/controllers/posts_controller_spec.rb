@@ -33,7 +33,7 @@ RSpec.describe PostsController, type: :controller do
   describe "index" do
     it "shows all movies" do
       get :index
-      expect(assigns(:posts)).to eq(Post.all)
+      expect(assigns(:posts)).to eq(Post.all.reverse())
     end
   end
 

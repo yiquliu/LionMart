@@ -10,7 +10,8 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the (LionMart)?home\s?page$/ then '/posts'
+    when /^the (LionMart )?login\s?page$/ then '/login'
+    when /^the (LionMart )?home\s?page$/ then '/posts'
     when /^the create new post page$/ then '/posts/new'
 
     when /^the home page for "(.*)"$/ then

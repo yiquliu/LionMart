@@ -9,7 +9,10 @@
 ### Run Cucumber:
 
     yarn add bootstrap
-    cucumber features/manage_products.feature
+    cucumber features .
+    
+### Run Unit Test：
+    rspec
 
 
 ### Service is deployed to:
